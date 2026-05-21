@@ -1,0 +1,75 @@
+{% extends "dashboard_base.html" %}
+
+
+{% block sidebar %}
+
+<a
+    href="/patient/dashboard"
+    class="active-link"
+>
+    Dashboard
+</a>
+
+<a href="/patient/book">
+    Book Appointment
+</a>
+
+<a href="/patient/appointments">
+    My Appointments
+</a>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="dashboard-header">
+
+    <h1 class="dashboard-title">
+        Welcome, {{ current_user.name }}
+    </h1>
+
+    <p class="dashboard-text">
+        Manage your appointments and healthcare activities.
+    </p>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="dashboard-card">
+
+        <h5>
+            Upcoming Appointments
+        </h5>
+
+        <h2>3</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Completed Visits
+        </h5>
+
+        <h2>10</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Favorite Doctors
+        </h5>
+
+        <h2>4</h2>
+
+    </div>
+
+</div>
+
+{% endblock %}

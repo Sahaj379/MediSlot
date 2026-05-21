@@ -1,0 +1,144 @@
+{% extends "dashboard_base.html" %}
+
+
+{% block sidebar %}
+
+<a href="/doctor/dashboard">
+    Dashboard
+</a>
+
+<a href="/doctor/services">
+    Services
+</a>
+
+<a href="/doctor/availability">
+    Availability
+</a>
+
+<a
+    href="/doctor/appointments"
+    class="active-link"
+>
+    Appointments
+</a>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="dashboard-header">
+
+    <h1 class="dashboard-title">
+        Patient Appointments
+    </h1>
+
+    <p class="dashboard-text">
+        Manage your appointment requests
+    </p>
+
+</div>
+
+
+<div class="table-card">
+
+    <div class="table-responsive">
+
+        <table class="table align-middle">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Date</th>
+
+                    <th>Time</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for appointment in appointments %}
+
+                <tr>
+
+                    <td>
+                        #{{ appointment.id }}
+                    </td>
+
+                    <td>
+                        {{ appointment.appointment_date }}
+                    </td>
+
+                    <td>
+                        {{ appointment.appointment_time }}
+                    </td>
+
+                    <td>
+
+                        {% if appointment.status == "Approved" %}
+
+                            <span class="badge bg-success">
+                                Approved
+                            </span>
+
+                        {% elif appointment.status == "Rejected" %}
+
+                            <span class="badge bg-danger">
+                                Rejected
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-warning text-dark">
+                                Pending
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="/doctor/appointment/approve/{{ appointment.id }}"
+                            class="btn btn-success btn-sm"
+                        >
+
+                            Approve
+
+                        </a>
+
+
+                        <a
+                            href="/doctor/appointment/reject/{{ appointment.id }}"
+                            class="btn btn-danger btn-sm"
+                        >
+
+                            Reject
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

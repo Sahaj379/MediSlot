@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-card">
+
+    <h1>
+        Dr. {{ doctor.name }}
+    </h1>
+
+    <p>
+        @{{ doctor.username }}
+    </p>
+
+    <hr>
+
+    <h4>
+        Services
+    </h4>
+
+    <ul>
+
+        {% for service in services %}
+
+            <li>
+
+                {{ service.title }}
+                -
+                ₹{{ service.fee }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

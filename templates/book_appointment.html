@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h2 class="auth-title">
+            Book Appointment
+        </h2>
+
+        <h5 class="mb-4 text-center">
+            Dr. {{ doctor.name }}
+        </h5>
+
+        <form method="POST">
+
+            <!-- SERVICE -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Select Service
+                </label>
+
+                <select
+                    name="service_id"
+                    class="form-select"
+                    required
+                >
+
+                    {% for service in services %}
+
+                        <option value="{{ service.id }}">
+
+                            {{ service.title }}
+                            -
+                            ₹{{ service.fee }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Appointment Date
+                </label>
+
+                <input
+                    type="date"
+                    name="appointment_date"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TIME SLOT -->
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Select Time Slot
+                </label>
+
+                <select
+                    name="appointment_time"
+                    class="form-select"
+                    required
+                >
+
+                    <option value="09:00">
+                        09:00 AM
+                    </option>
+
+                    <option value="10:00">
+                        10:00 AM
+                    </option>
+
+                    <option value="11:00">
+                        11:00 AM
+                    </option>
+
+                    <option value="12:00">
+                        12:00 PM
+                    </option>
+
+                    <option value="02:00">
+                        02:00 PM
+                    </option>
+
+                    <option value="03:00">
+                        03:00 PM
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SUBMIT BUTTON -->
+
+            <button
+                type="submit"
+                class="auth-btn w-100"
+            >
+
+                Confirm Booking
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

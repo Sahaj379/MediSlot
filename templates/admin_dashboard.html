@@ -1,0 +1,71 @@
+{% extends "dashboard_base.html" %}
+
+
+{% block sidebar %}
+
+<a
+    href="/admin/dashboard"
+    class="active-link"
+>
+    Dashboard
+</a>
+
+<a href="/admin/doctors">
+    Doctors
+</a>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="dashboard-header">
+
+    <h1 class="dashboard-title">
+        Welcome, Super Admin
+    </h1>
+
+    <p class="dashboard-text">
+        Monitor doctors, patients, and appointments.
+    </p>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="dashboard-card">
+
+        <h5>
+            Total Doctors
+        </h5>
+
+        <h2>25</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Total Patients
+        </h5>
+
+        <h2>120</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Total Appointments
+        </h5>
+
+        <h2>350</h2>
+
+    </div>
+
+</div>
+
+{% endblock %}

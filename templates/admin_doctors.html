@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <h2 class="logo-text">
+                MediSlot
+            </h2>
+
+            <p class="sidebar-subtitle">
+                Admin Panel
+            </p>
+
+        </div>
+
+
+        <nav class="sidebar-links">
+
+            <a href="/admin/dashboard">
+                Dashboard
+            </a>
+
+            <a
+                href="/admin/doctors"
+                class="active-link"
+            >
+                Doctors
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="dashboard-header">
+
+            <h1 class="dashboard-title">
+                Doctor Management
+            </h1>
+
+            <p class="dashboard-text">
+                Approve and manage doctors
+            </p>
+
+        </div>
+
+
+        <div class="table-card">
+
+            <table class="table align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Username</th>
+
+                        <th>Email</th>
+
+                        <th>Status</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for doctor in doctors %}
+
+                        <tr>
+
+                            <td>
+                                {{ doctor.name }}
+                            </td>
+
+                            <td>
+                                {{ doctor.username }}
+                            </td>
+
+                            <td>
+                                {{ doctor.email }}
+                            </td>
+
+
+                            <td>
+
+                                {% if doctor.is_verified %}
+
+                                    <span class="badge bg-success">
+                                        Approved
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                {% if not doctor.is_verified %}
+
+                                    <a
+                                        href="/admin/doctors/approve/{{ doctor.id }}"
+                                        class="btn btn-success btn-sm"
+                                    >
+
+                                        Approve
+
+                                    </a>
+
+                                {% endif %}
+
+
+                                <a
+                                    href="/admin/doctors/block/{{ doctor.id }}"
+                                    class="btn btn-danger btn-sm"
+                                >
+
+                                    Block
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-4">
+
+    <h2>
+        My Services
+    </h2>
+
+    <a
+        href="/doctor/services/add"
+        class="btn btn-custom"
+    >
+
+        Add Service
+
+    </a>
+
+</div>
+
+
+<div class="row">
+
+    {% for service in services %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="dashboard-card">
+
+                <h4>
+                    {{ service.title }}
+                </h4>
+
+                <p>
+                    {{ service.description }}
+                </p>
+
+                <hr>
+
+                <p>
+                    Duration:
+                    {{ service.duration }} mins
+                </p>
+
+                <p>
+                    Fee:
+                    ₹{{ service.fee }}
+                </p>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

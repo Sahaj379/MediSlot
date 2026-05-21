@@ -1,0 +1,79 @@
+{% extends "dashboard_base.html" %}
+
+
+{% block sidebar %}
+
+<a
+    href="/doctor/dashboard"
+    class="active-link"
+>
+    Dashboard
+</a>
+
+<a href="/doctor/services">
+    Services
+</a>
+
+<a href="/doctor/availability">
+    Availability
+</a>
+
+<a href="/doctor/appointments">
+    Appointments
+</a>
+
+{% endblock %}
+
+
+{% block dashboard_content %}
+
+<div class="dashboard-header">
+
+    <h1 class="dashboard-title">
+        Welcome Dr. {{ current_user.name }}
+    </h1>
+
+    <p class="dashboard-text">
+        Manage appointments, availability, and services.
+    </p>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="dashboard-card">
+
+        <h5>
+            Today's Appointments
+        </h5>
+
+        <h2>12</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Total Patients
+        </h5>
+
+        <h2>80</h2>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h5>
+            Pending Requests
+        </h5>
+
+        <h2>5</h2>
+
+    </div>
+
+</div>
+
+{% endblock %}

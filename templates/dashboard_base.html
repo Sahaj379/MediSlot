@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <h2 class="logo-text">
+                MediSlot
+            </h2>
+
+            <p class="sidebar-subtitle">
+                Healthcare Platform
+            </p>
+
+            <nav class="sidebar-links">
+
+                {% block sidebar %}
+
+                {% endblock %}
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="dashboard-main">
+
+        {% block dashboard_content %}
+
+        {% endblock %}
+
+    </main>
+
+</div>
+
+{% endblock %}

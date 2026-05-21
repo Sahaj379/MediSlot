@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Available Doctors
+</h2>
+
+<div class="mb-4">
+
+    <form method="GET">
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search doctor..."
+            >
+
+            <button
+                class="btn btn-custom"
+            >
+
+                Search
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+
+<div class="row">
+
+    {% for doctor in doctors %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="dashboard-card">
+
+                <h4>
+                    Dr. {{ doctor.name }}
+                </h4>
+
+                <p>
+                    @{{ doctor.username }}
+                </p>
+                <a
+                    href="/doctor/profile/{{ doctor.id }}"
+                    class="btn btn-outline-primary btn-sm mb-3"
+                >
+
+                    View Profile
+
+                </a>
+
+                <a
+                    href="/patient/book/{{ doctor.id }}"
+                    class="btn btn-custom"
+                >
+
+                    Book Appointment
+
+                </a>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

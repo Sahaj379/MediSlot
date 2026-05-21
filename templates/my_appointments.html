@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    My Appointments
+</h2>
+
+
+<div class="row">
+
+    {% for appointment in appointments %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="dashboard-card">
+
+                <h5>
+                    Appointment #{{ appointment.id }}
+                </h5>
+
+                <hr>
+
+                <p>
+                    Date:
+                    {{ appointment.appointment_date }}
+
+                    <br>
+
+                    Time:
+                    {{ appointment.appointment_time }}
+                </p>
+
+
+                <p>
+
+                    Status:
+
+                    {% if appointment.status != "Cancelled" %}
+
+                    <a
+                        href="/patient/appointments/cancel/{{ appointment.id }}"
+                        class="btn btn-danger btn-sm mt-3"
+                    >
+
+                        Cancel Appointment
+
+                    </a>
+
+                    {% endif %}
+
+                    {% if appointment.status == "Approved" %}
+
+                        <span class="badge bg-success">
+                            Approved
+                        </span>
+
+                    {% elif appointment.status == "Rejected" %}
+
+                        <span class="badge bg-danger">
+                            Rejected
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-warning text-dark">
+                            Pending
+                        </span>
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

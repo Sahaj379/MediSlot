@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+        My Availability
+    </h2>
+
+    <a
+        href="/doctor/availability/add"
+        class="btn btn-custom"
+    >
+
+        Add Availability
+
+    </a>
+
+</div>
+
+
+<div class="row">
+
+    {% for availability in availabilities %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="dashboard-card">
+
+                <h4>
+                    {{ availability.day }}
+                </h4>
+
+                <hr>
+
+                <p>
+                    Start:
+                    {{ availability.start_time }}
+                </p>
+
+                <p>
+                    End:
+                    {{ availability.end_time }}
+                </p>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
